@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<div>
+    <h2><a href="/shows/{{ show.id }}/">{{ show.title }}</a></h2>
+    <p>{{ show.description }}</p>
+    <img src="{{ show.image.url }}" alt="">
+    <p>{{ show.quantity }}</p>
+    <p>{{ show.genre }}</p>
+    <p>{{ show.date_filmed }}</p>
+</div>
+</body>
+</html>

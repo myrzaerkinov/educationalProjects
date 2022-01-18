@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genre</title>
+</head>
+<body>
+<div>
+    <h2><a href="/books/{{ book.id }}/">{{ book.title }}</a></h2>
+    <p>{{ book.description }}</p>
+    <img src="{{ book.image.url }}" alt="">
+    <p>{{ book.quantity }}</p>
+    <p>{{ book.genre }}</p>
+    <p>{{ book.date_publication }}</p>
+</div>
+</body>
+</html>

@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Book</title>
+    <title>Books</title>
 </head>
 <body>
 <div>
     <ul>
-      {% for i in book %}
+      {% for i in books %}
       <li>
-        <h2> {{ i.title }} </h2>
-        <p> {{ i.description }} </p>
-        <img src="{{ i.image.url }}" alt="">
+          <h2><a href="/books/{{ i.id }}/">{{ i.title }}</a></h2>
+          <p>{{ i.genre }}</p>
       </li>
       {% endfor %}
     </ul>
