@@ -1,19 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html lang="en" xmlns="" xmlns="">
 <head>
-    <meta charset="UTF-8">
+    <meta>
     <title>Shows</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}"/>
 </head>
 <body>
-<div>
-    <ul>
+<style>
+    .posts__container {
+        max-width: 900px;
+        margin-bottom: 40px;
+    }
+
+    body {
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    }
+
+    .post__img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .btn-primary {
+        background-color: #D9AFD9;
+        background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
+    }
+    .button__container {
+        max-width: 900px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+</style>
+
+
+<div class="container button__container">
+    <a href="/shows/" class="btn btn-primary">Shows</a>
+
+</div>
+
+<div class="container posts__container">
+    <div class="row gy-5">
         {% for i in shows %}
-        <li>
-             <h2><a href="/shows/{{ i.id }}/">{{ i.title }}</a></h2>
-             <pi>{{ i.genre }}</pi>
-        </li>
+        <div class="col-6">
+            <div class="card">
+                <img src="{{ i.image.url }}" class="card-img-top post__img" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.title }}</h5>
+                    <p class="card-text">{{ i.description }}</p>
+                    <a href="/shows/{{ i.id }}/" class="btn btn-primary">Go detail</a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 </body>
 </html>
