@@ -1,17 +1,104 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Genre</title>
+    <title>Books</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}"/>
 </head>
 <body>
-<div>
-    <h2><a href="/books/{{ book.id }}/">{{ book.title }}</a></h2>
-    <p>{{ book.description }}</p>
-    <img src="{{ book.image.url }}" alt="">
-    <p>{{ book.quantity }}</p>
-    <p>{{ book.genre }}</p>
-    <p>{{ book.date_publication }}</p>
+<style>
+    .btn-primary {
+        background: rgb(26,55,134);
+        background: radial-gradient(circle, rgba(26,55,134,0.8700696055684455) 0%, rgba(159,218,71,1) 0%, rgba(87,131,40,0.8236658932714618) 0%, rgba(154,225,69,1) 0%, rgba(170,200,75,1) 0%, rgba(200,35,68,1) 0%);
+    }
+
+    .button__container {
+        max-width: 960px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    body {
+        background: rgb(138,251,63);
+        background: radial-gradient(circle, rgba(138,251,63,0.8700696055684455) 0%, rgba(76,133,16,0.8236658932714618) 11%, rgba(154,225,69,1) 14%, rgba(159,218,71,1) 18%, rgba(170,200,75,1) 28%, rgba(252,70,107,1) 100%);
+    }
+
+    .detail-image {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .show-detail {
+        height: 90%;
+    }
+
+    .list-group-item {
+        background: rgb(164,40,86);
+        background: radial-gradient(circle, rgba(164,40,86,1) 0%, rgba(164,40,86,1) 2%, rgba(14,102,94,1) 100%);
+        font-family: Arial, Helvetica, sans-serif;
+        height: 90%;
+    }
+
+    .body__button {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .container {
+        height: 50%;
+    }
+
+    .book-detail {
+        background: rgb(83,251,63);
+        background: radial-gradient(circle, rgba(83,251,63,1) 0%, rgba(252,70,107,1) 100%);
+        margin-bottom: 10%;
+    }
+</style>
+<div class="button__container">
+    <button type="button" class="btn btn-primary"><a href="/books/">Books</a></button>
+    <button type="button" class="btn btn-primary"><a href="/add-book/">Add Book</a></button>
+</div>
+<div class="container book-detail">
+    <img src="{{ book.image.url }}" class="card-img-top detail-image" alt="...">
+    <div class="card-body body_detail">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <p class="card-text">{{ book.description }}</p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Quantity of series: {{ book.quantity }}</li>
+            <li class="list-group-item">Genre: {{ book.genre }}</li>
+            <li class="list-group-item">Date Publication: {{ book.date_publication }}</li>
+        </ul>
+    </div>
+    <div class="card-body body__button">
+        <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/update/">Change {{ book.title }}</a></button>
+        <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/delete/">Delete {{ book.title }}</a></button>
+    </div>
 </div>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Genre</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--    <h2><a href="/books/{{ book.id }}/">{{ book.title }}</a></h2>-->
+<!--    <p>{{ book.description }}</p>-->
+<!--    <img src="{{ book.image.url }}" alt="">-->
+<!--    <p>{{ book.quantity }}</p>-->
+<!--    <p>{{ book.genre }}</p>-->
+<!--    <p>{{ book.date_publication }}</p>-->
+<!--    <div>-->
+<!--        <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/update/">Change</a></button>-->
+<!--        <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/delete/">Delete</a></button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
