@@ -62,20 +62,55 @@
     <button type="button" class="btn btn-primary"><a href="/books/">Books</a></button>
     <button type="button" class="btn btn-primary"><a href="/add-book/">Add Book</a></button>
 </div>
-<div class="container book-detail">
-    <img src="{{ book.image.url }}" class="card-img-top detail-image" alt="...">
+<div class="container object-detail">
+    <img src="{{ object.image.url }}" class="card-img-top detail-image" alt="...">
     <div class="card-body body_detail">
-        <h5 class="card-title">{{ book.title }}</h5>
-        <p class="card-text">{{ book.description }}</p>
+        <h5 class="card-title">{{ object.title }}</h5>
+        <p class="card-text">{{ object.description }}</p>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Quantity of series: {{ book.quantity }}</li>
-            <li class="list-group-item">Genre: {{ book.genre }}</li>
-            <li class="list-group-item">Date Publication: {{ book.date_publication }}</li>
+            <li class="list-group-item">Quantity of series: {{ object.quantity }}</li>
+            <li class="list-group-item">Genre: {{ object.genre }}</li>
+            <li class="list-group-item">Date Publication: {{ object.date_publication }}</li>
         </ul>
     </div>
+    <div>
+        <h2>Comments: </h2>
+        <ul>
+            {% for i in object.book_comment.all %}
+            <li>
+                <p>{{ i.text }}</p>
+                <p>{{ i.created_date }}</p>
+            </li>
+        </ul>
+            {% endfor %}
+    </div>
+    <div>
+        <h2>Expert Recomendation: </h2>
+        <ul>
+            {% for i in object.expert_info.all %}
+            <li>
+                <p>{{ i.recomendation_text }}</p>
+            </li>
+        </ul>
+            {% endfor %}
+    </div>
+    <div>
+        <h2>Expert: </h2>
+        <ul>
+            {% for i in object.info_exp.all %}
+            <li>
+                <p>{{ i.name }}</p>
+                <p>{{ i.surname }}</p>
+                <p>{{ i.date_of_birth }}</p>
+                <p>{{ i.activity }}</p>
+            </li>
+        </ul>
+            {% endfor %}
+    </div>
+
     <div class="card-body body__button">
-        <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/update/">Change {{ book.title }}</a></button>
-        <button type="button" class="btn btn-primary"><a href="/books/{{ book.id }}/delete/">Delete {{ book.title }}</a></button>
+        <button type="button" class="btn btn-primary"><a href="/books/{{ object.id }}/update/">Change {{ object.title }}</a></button>
+        <button type="button" class="btn btn-primary"><a href="/books/{{ object.id }}/delete/">Delete {{ object.title }}</a></button>
     </div>
 </div>
 </body>
