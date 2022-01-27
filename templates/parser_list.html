@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    {% for i in object_list %}
+        <li>
+            <h2>{{ i.title }}</h2>
+            <img class="films-image" src="{{ i.image.url }}" alt="">
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
+
